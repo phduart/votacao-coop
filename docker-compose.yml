@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  oracle:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: oracle-votacao
+    environment:
+      ORACLE_PASSWORD: votacao
+      APP_USER: votacao
+      APP_USER_PASSWORD: votacao
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  oracle-data:

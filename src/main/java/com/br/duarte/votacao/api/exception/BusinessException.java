@@ -1,4 +1,4 @@
-package com.br.duarte.votacao.exception;
+package com.br.duarte.votacao.api.exception;
 
 public class BusinessException extends RuntimeException {
 

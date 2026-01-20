@@ -2,11 +2,15 @@ package com.br.duarte.votacao.domain.entity;
 
 import com.br.duarte.votacao.domain.enums.StatusSessao;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.OffsetDateTime;
 
-@Data
+@Setter
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "SESSAO_VOTACAO")
 public class SessaoVotacao {
@@ -33,5 +37,29 @@ public class SessaoVotacao {
     void prePersist() {
         this.abertaEm = OffsetDateTime.now();
         this.status = StatusSessao.ABERTA;
+    }
+
+    public static SessaoVotacao abrir(Pauta pauta, Integer minutos) {
+        SessaoVotacao sessao = new SessaoVotacao();
+        sessao.pauta = pauta;
+        sessao.abertaEm = OffsetDateTime.now();
+
+        int duracaoEfetiva = (minutos == null || minutos <= 0) ? 1 : minutos;
+        sessao.fechaEm = sessao.abertaEm.plusMinutes(duracaoEfetiva);
+
+        sessao.status = StatusSessao.ABERTA;
+        return sessao;
+    }
+
+    /**
+     * Verifica se a sessão é válida para votação.
+     * Uma sessão está aberta se o status for ABERTA e o horário atual
+     * estiver entre o início e o fim.
+     */
+    public boolean isAberta() {
+        OffsetDateTime agora = OffsetDateTime.now();
+        return StatusSessao.ABERTA.equals(this.status)
+                && agora.isAfter(this.abertaEm)
+                && agora.isBefore(this.fechaEm);
     }
 }

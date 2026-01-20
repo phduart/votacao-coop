@@ -2,10 +2,14 @@ package com.br.duarte.votacao.domain.entity;
 
 import com.br.duarte.votacao.domain.enums.OpcaoVoto;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
 
+@Builder
 @Data
 @Entity
 @Table(
@@ -14,6 +18,8 @@ import java.time.OffsetDateTime;
                 @UniqueConstraint(columnNames = {"PAUTA_ID", "CPF"})
         }
 )
+@NoArgsConstructor
+@AllArgsConstructor
 public class Voto {
 
     @Id

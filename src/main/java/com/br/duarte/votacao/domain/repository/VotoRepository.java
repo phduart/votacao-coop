@@ -1,6 +1,8 @@
 package com.br.duarte.votacao.domain.repository;
 
+import com.br.duarte.votacao.api.dto.response.VotoContagem;
 import com.br.duarte.votacao.domain.entity.Voto;
+import com.br.duarte.votacao.domain.enums.OpcaoVoto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,11 +13,9 @@ public interface VotoRepository extends JpaRepository<Voto, Long> {
 
     boolean existsByPautaIdAndCpf(Long pautaId, String cpf);
 
-    @Query("""
-        select v.voto, count(v)
-        from Voto v
-        where v.pauta.id = :pautaId
-        group by v.voto
-    """)
-    List<Object[]> contarVotosPorPauta(@Param("pautaId") Long pautaId);
+    @Query("SELECT new com.br.duarte.votacao.api.dto.response.VotoContagem(v.voto, COUNT(v)) " +
+            "FROM Voto v " +
+            "WHERE v.pauta.id = :pautaId " +
+            "GROUP BY v.voto")
+    List<VotoContagem> contarVotosAgrupados(Long pautaId);
 }

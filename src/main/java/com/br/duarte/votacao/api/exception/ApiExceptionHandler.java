@@ -1,4 +1,4 @@
-package com.br.duarte.votacao.exception;
+package com.br.duarte.votacao.api.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

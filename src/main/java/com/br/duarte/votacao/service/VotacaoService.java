@@ -4,6 +4,7 @@ import com.br.duarte.votacao.api.dto.request.AbrirSessaoRequest;
 import com.br.duarte.votacao.api.dto.request.VotoRequest;
 import com.br.duarte.votacao.api.dto.response.ResultadoVotacaoResponse;
 import com.br.duarte.votacao.api.dto.response.SessaoVotacaoResponse;
+import com.br.duarte.votacao.client.userInfo.UserInfoClient;
 import com.br.duarte.votacao.domain.entity.Pauta;
 import com.br.duarte.votacao.domain.entity.SessaoVotacao;
 import com.br.duarte.votacao.domain.entity.Voto;
@@ -13,29 +14,26 @@ import com.br.duarte.votacao.domain.repository.PautaRepository;
 import com.br.duarte.votacao.domain.repository.SessaoVotacaoRepository;
 import com.br.duarte.votacao.domain.repository.VotoRepository;
 import com.br.duarte.votacao.exception.BusinessException;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class VotacaoService {
 
     private final PautaRepository pautaRepository;
     private final SessaoVotacaoRepository sessaoRepository;
     private final VotoRepository votoRepository;
-
-    public VotacaoService(PautaRepository pautaRepository,
-                          SessaoVotacaoRepository sessaoRepository,
-                          VotoRepository votoRepository) {
-        this.pautaRepository = pautaRepository;
-        this.sessaoRepository = sessaoRepository;
-        this.votoRepository = votoRepository;
-    }
+    private final UserInfoClient userInfoClient;
 
     // ----------------------------
     // Abrir sessão
@@ -72,6 +70,22 @@ public class VotacaoService {
     // ----------------------------
     @Transactional
     public void votar(Long pautaId, VotoRequest request) {
+
+        try {
+            var response = userInfoClient.checkCpfStatus(request.cpf());
+
+            if ("UNABLE_TO_VOTE".equals(response.status())) {
+                throw new BusinessException("Associado não autorizado a votar.");
+            }
+
+        } catch (feign.FeignException.NotFound e) {
+            log.info(" [ API CPF ] - Feing Not Found | Seguindo fluxo alternativo para Validar CPF ");
+            if (!isUltimoDigitoPar(request.cpf())) {
+                throw new BusinessException("CPF não encontrado e não elegível pelo critério de contingência.");
+            }
+        } catch (feign.FeignException e) {
+            throw new BusinessException("Erro na integração com o sistema de validação de CPF.");
+        }
 
         SessaoVotacao sessao = sessaoRepository.findByPautaId(pautaId)
                 .orElseThrow(() -> new BusinessException("Sessão não encontrada"));
@@ -151,6 +165,20 @@ public class VotacaoService {
                 sessao.getFechaEm(),
                 sessao.getStatus()
         );
+    }
+
+    /**
+     * Verifica se o último dígito do CPF é par.
+     */
+    private boolean isUltimoDigitoPar(String cpf) {
+        if (cpf == null || cpf.isEmpty()) return false;
+
+        // Remove caracteres não numéricos se houver
+        String apenasNumeros = cpf.replaceAll("\\D", "");
+        char ultimoChar = apenasNumeros.charAt(apenasNumeros.length() - 1);
+        int ultimoDigito = Character.getNumericValue(ultimoChar);
+
+        return ultimoDigito % 2 == 0;
     }
 }
 

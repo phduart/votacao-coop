@@ -16,6 +16,7 @@ import com.br.duarte.votacao.exception.BusinessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.EnumMap;
 import java.util.List;
@@ -124,6 +125,22 @@ public class VotacaoService {
             sessaoRepository.save(sessao);
             throw new BusinessException("Sessão expirada");
         }
+    }
+
+    @Transactional
+    public void fecharSessoesExpiradas() {
+
+        OffsetDateTime agora = OffsetDateTime.now();
+
+        List<SessaoVotacao> sessoes =
+                sessaoRepository.findByStatusAndFechaEmBefore(
+                        StatusSessao.ABERTA,
+                        agora
+                );
+
+        sessoes.forEach(sessao ->
+                sessao.setStatus(StatusSessao.FECHADA)
+        );
     }
 
     private SessaoVotacaoResponse toResponse(SessaoVotacao sessao) {

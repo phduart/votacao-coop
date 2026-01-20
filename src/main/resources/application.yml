@@ -23,6 +23,11 @@ spring:
     schemas: VOTACAO
     clean-disabled: false
 
+  redis:
+    url: redis://redis:6379
+    cache:
+      type: redis
+
 logging:
   level:
     org.springframework.jdbc: DEBUG

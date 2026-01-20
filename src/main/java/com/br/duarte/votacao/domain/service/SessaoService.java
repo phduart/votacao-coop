@@ -12,6 +12,7 @@ import com.br.duarte.votacao.domain.repository.SessaoVotacaoRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -51,7 +52,7 @@ public class SessaoService {
         }
     }
 
-    @org.springframework.transaction.annotation.Transactional
+    @Transactional
     public void fecharSessoesExpiradas() {
 
         OffsetDateTime agora = OffsetDateTime.now();
@@ -65,5 +66,11 @@ public class SessaoService {
         sessoes.forEach(sessao ->
                 sessao.setStatus(StatusSessao.FECHADA)
         );
+    }
+
+    @Cacheable(value = "sessoes", key = "#pautaId")
+    public SessaoVotacao getSessaoPorPautaId(Long pautaId) {
+        return sessaoRepository.findByPautaId(pautaId)
+                .orElseThrow(() -> new BusinessException("Sessão não encontrada para a pauta: " + pautaId));
     }
 }

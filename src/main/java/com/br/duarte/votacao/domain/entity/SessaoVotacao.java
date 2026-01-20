@@ -4,6 +4,7 @@ import com.br.duarte.votacao.domain.enums.StatusSessao;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 @Setter
@@ -13,8 +14,8 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 @Table(name = "SESSAO_VOTACAO")
-public class SessaoVotacao {
-
+public class SessaoVotacao implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

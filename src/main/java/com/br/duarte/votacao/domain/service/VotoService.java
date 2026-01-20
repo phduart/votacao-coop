@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class VotoService {
 
     private final SessaoVotacaoRepository sessaoRepository;
+    private final SessaoService sessaoService;
     private final VotoRepository votoRepository;
     private final CpfUtils cpfUtils;
 
@@ -27,8 +28,7 @@ public class VotoService {
 
     @Transactional
     protected void registrarVotoNoBanco(Long pautaId, VotoRequest request) {
-        SessaoVotacao sessao = sessaoRepository.findByPautaId(pautaId)
-                .orElseThrow(() -> new BusinessException("Sessão não encontrada para a pauta: " + pautaId));
+        SessaoVotacao sessao = sessaoService.getSessaoPorPautaId(pautaId);
 
         validarSessaoAtiva(sessao);
 

@@ -1,4 +1,4 @@
-package com.br.duarte.votacao.domain.exception;
+package com.br.duarte.votacao.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

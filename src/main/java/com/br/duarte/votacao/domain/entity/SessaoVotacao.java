@@ -10,7 +10,7 @@ import java.time.OffsetDateTime;
 @Getter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 @Table(name = "SESSAO_VOTACAO")
 public class SessaoVotacao {

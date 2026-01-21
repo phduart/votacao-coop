@@ -272,8 +272,6 @@ Essa organização melhora a legibilidade, facilita testes, manutenção e evolu
 ---
 
 ## ✒ Autor do Projeto
-``
-``
 [Paulo Duarte](mailto:ph.duartte97@gmail.com)
 
 ## 📄 Licença

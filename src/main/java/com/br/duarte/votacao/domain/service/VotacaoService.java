@@ -33,7 +33,7 @@ public class VotacaoService {
         List<VotoContagem> contagens = votoRepository.contarVotosAgrupados(pautaId);
 
         Map<OpcaoVoto, Long> votosNoBanco = contagens.stream()
-                .collect(Collectors.toMap(VotoContagem::opcao, VotoContagem::total));
+                .collect(Collectors.toMap(VotoContagem::getOpcao, VotoContagem::getTotal));
 
         Map<OpcaoVoto, Long> resultadoFinal = new EnumMap<>(OpcaoVoto.class);
 

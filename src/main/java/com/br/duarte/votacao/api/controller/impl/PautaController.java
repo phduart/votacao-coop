@@ -6,6 +6,7 @@ import com.br.duarte.votacao.api.dto.response.PautaResponse;
 import com.br.duarte.votacao.api.dto.response.ResultadoVotacaoResponse;
 import com.br.duarte.votacao.domain.service.PautaService;
 import com.br.duarte.votacao.domain.service.VotacaoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class PautaController implements IPautaController {
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PautaResponse criar(@RequestBody PautaRequest pauta) {
+    public PautaResponse criar(@RequestBody @Valid PautaRequest pauta) {
         return pautaService.salvar(pauta);
     }
 

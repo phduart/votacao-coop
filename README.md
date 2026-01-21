@@ -270,6 +270,12 @@ O projeto segue uma organização baseada em responsabilidade e domínio de neg�
 Essa organização melhora a legibilidade, facilita testes, manutenção e evolução do sistema.
 
 ---
+
+## ✒ Autor do Projeto
+``
+``
+[Paulo Duarte](mailto:ph.duartte97@gmail.com)
+
 ## 📄 Licença
 
 MIT License

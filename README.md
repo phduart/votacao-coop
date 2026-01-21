@@ -15,6 +15,10 @@ Uma solução para gerenciar pautas, sessões de votação e votos em um sistema
 
 O projeto utiliza **Java (Spring Boot)** para a API, **Oracle** como banco de dados, **Redis** para cache e fila de sessões, e um **Dashboard em Python** para visualização de dados.
 
+## 🧰 Desenho de Solução
+
+![img_1.png](img_1.png)
+
 ---
 
 ## 🛠️ Tecnologias e Stack

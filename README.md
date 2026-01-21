@@ -17,7 +17,7 @@ O projeto utiliza **Java (Spring Boot)** para a API, **Oracle** como banco de da
 
 ## 🧰 Desenho de Solução
 
-![img_1.png](img/img_1.png)
+![img_1.png](img/solucao.png)
 
 ---
 
@@ -64,15 +64,14 @@ docker logs -f votacaoapp
 
 ### Swagger
 Abrir a seguinte URL no browser para visualizar o Swagger UI:
-```
-http://localhost:8080/swagger-ui/index.html
-```
+> http://localhost:8080/swagger-ui/index.html
+
 
 ### Dashboard
 Abrir a seguinte URL no browser para visualizar o Dashboard :
-```
-http://localhost:8501/
-```
+
+> http://localhost:8501/
+
 
 ### Destruir o serviço
 ```
@@ -83,6 +82,12 @@ docker-compose down
 ## 📡 Endpoints da API
 
 Base URL: `http://localhost:8080/api/v1`
+
+### 📮 Collection Postman
+```
+src/resources/postman
+```
+![img.png](img/postman.png)
 
 ---
 
@@ -190,9 +195,8 @@ Pauta ou sessão não encontrada.
 ---
 
 ## 📊 Dashboard (Streamlit)
-````html
-http://localhost:8501/
-````
+### Para acessar
+> http://localhost:8501/
 
 Exemplo de funcionalidades:
 - Tabela de Pautas
@@ -202,4 +206,45 @@ Exemplo de funcionalidades:
 - Gradico de Votos por Hora
 - Tabela de Votos Detalhada
 
-![img.png](img/img.png)
+![img.png](img/dados.png)
+
+--- 
+
+## 📌 Validação de CPF
+> ⚠️ **Atenção:** O fluxo contém uma chamada para uma API usando o Feing Cliente, porém a API pode ficar indisponível.
+Caso a API não esteja online, é feito o cálculo de validação do CPF brasileiro.
+
+![cpf.png](img/cpf.png)
+> ℹ️ **Nota:** Utilização de Java Docs
+---
+
+## ⌚ Performance
+> ℹ️ **Nota:** Foi realizado um teste de performance utilizando Apache JMeter em uma API Java, simulando carga concorrente sobre múltiplos endpoints REST.
+> 
+> ``Script .jmx em : src/resources/jmeter``
+### 📌 Cenário do teste
+````yaml
+  Endpoints testados:               4 (POST e GET)
+  Requisições por endpoint:         1.000
+  Total de requisições:             4.000
+  Tempo médio de resposta (geral):  ~1.5s
+  Tempo máximo registrado:          ~5.3s
+  Throughput total:                 ~384 requisições/segundo
+  Taxa de erro:                     0%
+  Payload médio:                    ~225 bytes
+````
+![teste.png](img/teste.png)
+
+---
+
+## ⭕ Painel de API (Streamlit)
+### Para acessar
+> http://localhost:8501/
+
+API's:
+- Criar Pauta
+- Abrir Sessão
+- Registrar Voto
+- Resulta da Pauta
+
+![painel.png](img/painel.png)

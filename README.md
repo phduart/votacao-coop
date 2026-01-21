@@ -40,6 +40,7 @@ O projeto utiliza **Java (Spring Boot)** para a API, **Oracle** como banco de da
 **Outros:**
 - Docker / Docker Compose
 - OpenAPI 3.0
+- Flyway / Migration
 ---
 
 ## 🚀 Como Rodar

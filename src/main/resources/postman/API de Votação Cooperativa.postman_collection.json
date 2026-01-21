@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "60242680-3035-4e2f-bf43-5b9c2cc7b331",
+		"name": "API de Votação Cooperativa",
+		"description": "Collection para testar a API de Votação Cooperativa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12086119",
+		"_collection_link": "https://locals-test.postman.co/workspace/4.-Local-Tests~bf13fe99-86e4-4996-a397-a256f7eefd48/collection/12086119-60242680-3035-4e2f-bf43-5b9c2cc7b331?action=share&source=collection_link&creator=12086119"
+	},
+	"item": [
+		{
+			"name": "Pautas",
+			"item": [
+				{
+					"name": "Criar Pauta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titulo\": \"Pauta de Teste\",\n  \"descricao\": \"Descrição da pauta de teste\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/pautas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pautas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Resultado da Pauta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/pautas/{{pautaId}}/resultado",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pautas",
+								"{{pautaId}}",
+								"resultado"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sessões de Votação",
+			"item": [
+				{
+					"name": "Abrir Sessão de Votação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"minutos\": 5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/pautas/{{pautaId}}/sessao",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pautas",
+								"{{pautaId}}",
+								"sessao"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Votos",
+			"item": [
+				{
+					"name": "Registrar Voto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"12345678901\",\n  \"voto\": \"SIM\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/pautas/{{pautaId}}/votos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pautas",
+								"{{pautaId}}",
+								"votos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "pautaId",
+			"value": "1"
+		}
+	]
+}

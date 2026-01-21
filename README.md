@@ -24,7 +24,7 @@ O projeto utiliza **Java (Spring Boot)** para a API, **Oracle** como banco de da
 ## 🛠️ Tecnologias e Stack
 
 **Backend:**
-- Java 11
+- Java 21
 - Spring Boot
 - Spring Data JPA / Hibernate
 - Gradle

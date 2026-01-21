@@ -1,7 +1,7 @@
 package com.br.duarte.votacao.domain.service;
 
-import com.br.duarte.votacao.api.dto.request.AbrirSessaoRequest;
-import com.br.duarte.votacao.api.dto.response.SessaoVotacaoResponse;
+import com.br.duarte.votacao.api.v1.dto.request.AbrirSessaoRequest;
+import com.br.duarte.votacao.api.v1.dto.response.SessaoVotacaoResponse;
 import com.br.duarte.votacao.api.exception.BusinessException;
 import com.br.duarte.votacao.api.exception.ResourceNotFoundException;
 import com.br.duarte.votacao.domain.entity.Pauta;

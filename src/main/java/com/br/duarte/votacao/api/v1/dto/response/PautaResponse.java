@@ -1,4 +1,4 @@
-package com.br.duarte.votacao.api.dto.response;
+package com.br.duarte.votacao.api.v1.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;

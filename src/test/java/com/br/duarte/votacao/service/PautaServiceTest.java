@@ -1,9 +1,9 @@
 package com.br.duarte.votacao.service;
 
-import com.br.duarte.votacao.api.dto.request.PautaRequest;
-import com.br.duarte.votacao.api.dto.response.PautaResponse;
+import com.br.duarte.votacao.api.v1.dto.request.PautaRequest;
+import com.br.duarte.votacao.api.v1.dto.response.PautaResponse;
 import com.br.duarte.votacao.api.exception.BusinessException;
-import com.br.duarte.votacao.api.mapper.PautaMapper;
+import com.br.duarte.votacao.api.v1.mapper.PautaMapper;
 import com.br.duarte.votacao.domain.entity.Pauta;
 import com.br.duarte.votacao.domain.repository.PautaRepository;
 import com.br.duarte.votacao.domain.service.PautaService;
@@ -37,9 +37,11 @@ class PautaServiceTest {
     @DisplayName("Deve salvar uma pauta com sucesso usando setters")
     void deveSalvarPautaComSucesso() {
         // Arrange
-        PautaRequest request = new PautaRequest();
-        request.setTitulo("Aumento VR");
-        request.setDescricao("Aumento de 10%");
+        PautaRequest request =
+                PautaRequest.builder()
+                        .titulo("Aumento VR")
+                        .descricao("Aumento de 10%")
+                        .build();
 
         Pauta pautaEntity = new Pauta();
         pautaEntity.setTitulo(request.getTitulo());

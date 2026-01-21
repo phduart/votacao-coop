@@ -1,7 +1,7 @@
 package com.br.duarte.votacao.service;
 
-import com.br.duarte.votacao.api.dto.response.ResultadoVotacaoResponse;
-import com.br.duarte.votacao.api.dto.response.VotoContagem;
+import com.br.duarte.votacao.api.v1.dto.response.ResultadoVotacaoResponse;
+import com.br.duarte.votacao.api.v1.dto.response.VotoContagem;
 import com.br.duarte.votacao.api.exception.ResourceNotFoundException;
 import com.br.duarte.votacao.domain.enums.OpcaoVoto;
 import com.br.duarte.votacao.domain.repository.PautaRepository;

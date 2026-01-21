@@ -1,11 +1,13 @@
-package com.br.duarte.votacao.api.dto.request;
+package com.br.duarte.votacao.api.v1.dto.request;
 
 import com.br.duarte.votacao.domain.enums.OpcaoVoto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
 
+@Builder
 @Schema(description = "Dados para registro de voto")
 public record VotoRequest(
 

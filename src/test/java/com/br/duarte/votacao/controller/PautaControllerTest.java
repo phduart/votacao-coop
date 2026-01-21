@@ -1,8 +1,8 @@
 package com.br.duarte.votacao.controller;
 
-import com.br.duarte.votacao.api.controller.impl.PautaController;
-import com.br.duarte.votacao.api.dto.response.PautaResponse;
-import com.br.duarte.votacao.api.dto.response.ResultadoVotacaoResponse;
+import com.br.duarte.votacao.api.v1.controller.impl.PautaController;
+import com.br.duarte.votacao.api.v1.dto.response.PautaResponse;
+import com.br.duarte.votacao.api.v1.dto.response.ResultadoVotacaoResponse;
 import com.br.duarte.votacao.domain.service.PautaService;
 import com.br.duarte.votacao.domain.service.VotacaoService;
 import com.fasterxml.jackson.databind.ObjectMapper;

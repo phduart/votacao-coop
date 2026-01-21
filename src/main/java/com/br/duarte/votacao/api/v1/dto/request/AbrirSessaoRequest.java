@@ -1,4 +1,4 @@
-package com.br.duarte.votacao.api.dto.request;
+package com.br.duarte.votacao.api.v1.dto.request;
 
 
 import io.swagger.v3.oas.annotations.media.Schema;

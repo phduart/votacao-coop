@@ -1,6 +1,6 @@
-package com.br.duarte.votacao.api.controller;
+package com.br.duarte.votacao.api.v1.controller;
 
-import com.br.duarte.votacao.api.dto.request.VotoRequest;
+import com.br.duarte.votacao.api.v1.dto.request.VotoRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

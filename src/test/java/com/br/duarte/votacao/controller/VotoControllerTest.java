@@ -1,6 +1,7 @@
 package com.br.duarte.votacao.controller;
 
-import com.br.duarte.votacao.api.controller.impl.VotoController;
+import com.br.duarte.votacao.api.v1.controller.impl.VotoController;
+import com.br.duarte.votacao.api.v1.dto.request.VotoRequest;
 import com.br.duarte.votacao.domain.enums.OpcaoVoto;
 import com.br.duarte.votacao.domain.service.VotoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,7 +48,7 @@ class VotoControllerTest {
                 .andExpect(status().isCreated());
 
         verify(votoService).votar(pautaId,
-                new com.br.duarte.votacao.api.dto.request.VotoRequest(
+                new VotoRequest(
                         "12345678901",
                         OpcaoVoto.SIM
                 )

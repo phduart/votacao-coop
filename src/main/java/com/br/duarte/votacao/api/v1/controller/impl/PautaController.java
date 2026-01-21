@@ -1,9 +1,9 @@
-package com.br.duarte.votacao.api.controller.impl;
+package com.br.duarte.votacao.api.v1.controller.impl;
 
-import com.br.duarte.votacao.api.controller.IPautaController;
-import com.br.duarte.votacao.api.dto.request.PautaRequest;
-import com.br.duarte.votacao.api.dto.response.PautaResponse;
-import com.br.duarte.votacao.api.dto.response.ResultadoVotacaoResponse;
+import com.br.duarte.votacao.api.v1.controller.IPautaController;
+import com.br.duarte.votacao.api.v1.dto.request.PautaRequest;
+import com.br.duarte.votacao.api.v1.dto.response.PautaResponse;
+import com.br.duarte.votacao.api.v1.dto.response.ResultadoVotacaoResponse;
 import com.br.duarte.votacao.domain.service.PautaService;
 import com.br.duarte.votacao.domain.service.VotacaoService;
 import jakarta.validation.Valid;

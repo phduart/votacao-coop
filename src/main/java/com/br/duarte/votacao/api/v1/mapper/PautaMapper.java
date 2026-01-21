@@ -1,7 +1,7 @@
-package com.br.duarte.votacao.api.mapper;
+package com.br.duarte.votacao.api.v1.mapper;
 
-import com.br.duarte.votacao.api.dto.request.PautaRequest;
-import com.br.duarte.votacao.api.dto.response.PautaResponse;
+import com.br.duarte.votacao.api.v1.dto.request.PautaRequest;
+import com.br.duarte.votacao.api.v1.dto.response.PautaResponse;
 import com.br.duarte.votacao.domain.entity.Pauta;
 import org.mapstruct.Mapper;
 

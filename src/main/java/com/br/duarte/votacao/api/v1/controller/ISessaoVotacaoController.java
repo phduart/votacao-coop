@@ -1,7 +1,7 @@
-package com.br.duarte.votacao.api.controller;
+package com.br.duarte.votacao.api.v1.controller;
 
-import com.br.duarte.votacao.api.dto.request.AbrirSessaoRequest;
-import com.br.duarte.votacao.api.dto.response.SessaoVotacaoResponse;
+import com.br.duarte.votacao.api.v1.dto.request.AbrirSessaoRequest;
+import com.br.duarte.votacao.api.v1.dto.response.SessaoVotacaoResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

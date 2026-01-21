@@ -1,4 +1,4 @@
-package com.br.duarte.votacao.api.dto.response;
+package com.br.duarte.votacao.api.v1.dto.response;
 
 import com.br.duarte.votacao.domain.enums.StatusSessao;
 

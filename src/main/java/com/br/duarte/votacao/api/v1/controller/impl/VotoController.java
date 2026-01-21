@@ -1,7 +1,7 @@
-package com.br.duarte.votacao.api.controller.impl;
+package com.br.duarte.votacao.api.v1.controller.impl;
 
-import com.br.duarte.votacao.api.controller.IVotoController;
-import com.br.duarte.votacao.api.dto.request.VotoRequest;
+import com.br.duarte.votacao.api.v1.controller.IVotoController;
+import com.br.duarte.votacao.api.v1.dto.request.VotoRequest;
 import com.br.duarte.votacao.domain.service.VotoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

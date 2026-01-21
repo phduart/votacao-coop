@@ -1,6 +1,6 @@
 package com.br.duarte.votacao.service;
 
-import com.br.duarte.votacao.api.dto.request.VotoRequest;
+import com.br.duarte.votacao.api.v1.dto.request.VotoRequest;
 import com.br.duarte.votacao.api.exception.BusinessException;
 import com.br.duarte.votacao.domain.entity.Pauta;
 import com.br.duarte.votacao.domain.entity.SessaoVotacao;

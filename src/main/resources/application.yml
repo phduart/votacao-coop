@@ -1,14 +1,24 @@
 spring:
+  application:
+    name: votacaoapp
+
+  jackson:
+    time-zone: America/Sao_Paulo
+
   datasource:
-    url: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    url: jdbc:oracle:thin:@oracle:1521/XEPDB1
     username: votacao
     password: votacao
     driver-class-name: oracle.jdbc.OracleDriver
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
 
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.OracleDialect
@@ -20,7 +30,16 @@ spring:
     schemas: VOTACAO
     clean-disabled: false
 
+  redis:
+    url: redis://redis:6379
+    cache:
+      type: redis
+
 logging:
   level:
     org.springframework.jdbc: DEBUG
     org.flywaydb: DEBUG
+
+scheduler:
+  sessao:
+    delay: 60000 # 1 minuto

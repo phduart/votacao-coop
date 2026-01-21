@@ -1,13 +1,26 @@
-version: "3.8"
-
 services:
+  votacaoapp:
+    build: .
+    container_name: votacaoapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      oracle:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - votacao-network
+
   oracle:
     image: gvenzl/oracle-xe:21-slim
-    container_name: oracle-votacao
+    container_name: oracle
     environment:
-      ORACLE_PASSWORD: votacao
-      APP_USER: votacao
-      APP_USER_PASSWORD: votacao
+      - ORACLE_PASSWORD=votacao
+      - APP_USER=votacao
+      - APP_USER_PASSWORD=votacao
+      - TZ=America/Sao_Paulo
+      - ORA_SDTZ=America/Sao_Paulo
     ports:
       - "1521:1521"
     volumes:
@@ -17,6 +30,44 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+    networks:
+      - votacao-network
+
+  redis:
+    image: redis:7.4.2
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - votacao-network
+
+  streamlit:
+    image: python:3.11-slim
+    container_name: streamlit-votacao
+    working_dir: /app
+    volumes:
+      - ./app/streamlit:/app
+    ports:
+      - "8501:8501"
+    command: >
+      bash -c "pip install --no-cache-dir streamlit requests pandas oracledb && 
+               streamlit run streamlit_votacao.py --server.port 8501 --server.address 0.0.0.0"
+    environment:
+      - ORACLE_HOST=oracle
+      - ORACLE_PORT=1521
+      - ORACLE_USER=votacao
+      - ORACLE_PASSWORD=votacao
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - votacao-network
 
 volumes:
   oracle-data:
+  redis-data:
+
+networks:
+  votacao-network:
+    driver: bridge

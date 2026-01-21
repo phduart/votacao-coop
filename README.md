@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-# votacao coop
-API de Votação Cooperativa 
-=======
 # API de Votação Cooperativa
 ![Java](https://img.shields.io/badge/Java-2C2C2C?style=for-the-badge&logo=java&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-1B5E20?style=for-the-badge&logo=springboot&logoColor=white)
@@ -197,6 +193,3 @@ Exemplo de funcionalidades:
 - Tabela de Votos Detalhada
 
 ![img.png](img.png)
-
----
->>>>>>> Stashed changes

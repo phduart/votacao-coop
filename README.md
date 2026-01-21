@@ -64,6 +64,12 @@ Abrir a seguinte URL no browser para visualizar o Swagger UI:
 http://localhost:8080/swagger-ui/index.html
 ```
 
+### Dashboard
+Abrir a seguinte URL no browser para visualizar o Dashboard :
+```
+http://localhost:8501/
+```
+
 ### Destruir o serviço
 ```
 docker-compose down

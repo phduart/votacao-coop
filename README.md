@@ -17,7 +17,7 @@ O projeto utiliza **Java (Spring Boot)** para a API, **Oracle** como banco de da
 
 ## 🧰 Desenho de Solução
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 
 ---
 
@@ -202,4 +202,4 @@ Exemplo de funcionalidades:
 - Gradico de Votos por Hora
 - Tabela de Votos Detalhada
 
-![img.png](img.png)
+![img.png](img/img.png)

@@ -8,6 +8,17 @@ group = 'com.br.duarte'
 version = '0.0.1-SNAPSHOT'
 description = 'API de Votação Cooperativa'
 
+tasks.jar {
+
+	archiveFileName = "app-plain.jar"
+}
+
+tasks.bootJar {
+	archiveFileName = "app.jar"
+	launchScript()
+}
+
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)

@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-BASE_URL = "http://localhost:8080"
+BASE_URL = "http://votacaoapp:8080"
 
 # ==================================================
 # HELPERS API
@@ -54,7 +54,7 @@ def safe_get(url):
 @st.cache_data(ttl=60)
 def load_data(query):
     # Abre a conexão dentro da função (evita cache quebrado)
-    with oracledb.connect(user="votacao", password="votacao", dsn="localhost:1521/XEPDB1") as conn:
+    with oracledb.connect(user="votacao", password="votacao", dsn="oracle:1521/XEPDB1") as conn:
         df = pd.read_sql(query, conn)
     return df
 

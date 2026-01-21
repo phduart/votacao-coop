@@ -1,12 +1,19 @@
 spring:
+  application:
+    name: votacaoapp
+
   jackson:
     time-zone: America/Sao_Paulo
 
   datasource:
-    url: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    url: jdbc:oracle:thin:@oracle:1521/XEPDB1
     username: votacao
     password: votacao
     driver-class-name: oracle.jdbc.OracleDriver
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
 
   jpa:
     hibernate:

@@ -248,3 +248,28 @@ API's:
 - Resulta da Pauta
 
 ![painel.png](img/painel.png)
+
+---
+
+## 📂 Organização dos Pacotes
+
+![pacotes.png](img/pacotes.png)
+
+O projeto segue uma organização baseada em responsabilidade e domínio de negócio, inspirada em boas práticas de Clean Architecture e DDD.
+
+- **controller**: Camada de entrada da aplicação (API REST).
+- **service**: Contém as regras de negócio do sistema.
+- **repository**: Camada de persistência e acesso ao banco de dados.
+- **domain**: Representa o domínio da aplicação (entidades, DTOs e enums).
+- **config**: Configurações gerais da aplicação (Swagger, Redis, CORS, etc).
+- **scheduler**: Processos agendados, como encerramento automático de sessões.
+- **exception**: Tratamento centralizado de exceções e erros.
+- **mapper**: Conversão entre entidades e DTOs.
+- **util**: Classes utilitárias reutilizáveis.
+
+Essa organização melhora a legibilidade, facilita testes, manutenção e evolução do sistema.
+
+---
+## 📄 Licença
+
+MIT License
